@@ -47,11 +47,35 @@
 // });
 // console.log("程序执行完毕");
 
-var Hello = require('./hello');
-hello = new Hello(); 
-hello.setName('BYVoid'); 
-hello.sayHello(); 
+// var Hello = require('./hello');
+// hello = new Hello(); 
+// hello.setName('BYVoid'); 
+// hello.sayHello(); 
 
-hello2 = new Hello(); 
-hello2.setName('Yanfeng'); 
-hello2.sayHello(); 
+// hello2 = new Hello(); 
+// hello2.setName('Yanfeng'); 
+// hello2.sayHello(); 
+
+
+process.on('exit', function(code) {
+
+  // 以下代码永远不会执行
+  setTimeout(function() {
+    console.log("该代码不会执行");
+  }, 0);
+  
+  console.log('退出码为:', code);
+});
+console.log("程序执行结束");
+
+console.log(process.execPath);
+
+process.stdout.write("Hello World!" + "\n");
+
+process.argv.forEach(function(val, index, array) {
+   console.log(index + ': ' + val);
+});
+console.log('当前目录: ' + process.cwd());
+
+// 输出内存使用情况
+console.log(process.memoryUsage());
